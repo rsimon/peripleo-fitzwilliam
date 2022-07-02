@@ -1,0 +1,55 @@
+{
+  "name": "peripleo-fitzwilliam",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An implementation of Peripleo with collections data from the Fitzwilliam Museum",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack serve --open --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsimon/peripleo-fitzwilliam.git"
+  },
+  "author": "Rainer Simon",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "sass": "^1.49.7",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {
+    "@math.gl/web-mercator": "^3.5.7",
+    "@turf/bbox": "^6.5.0",
+    "@turf/centroid": "^6.5.0",
+    "flexsearch": "^0.7.21",
+    "framer-motion": "^6.2.6",
+    "maplibre-gl": "^2.1.6",
+    "ngraph.graph": "^20.0.0",
+    "rbush": "^3.0.1",
+    "rbush-knn": "^3.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-draggable": "^4.4.4",
+    "react-icons": "^4.3.1",
+    "react-image-lightbox": "^5.1.4",
+    "react-joyride": "^2.4.0",
+    "react-map-gl": "^7.0.6",
+    "react-markdown": "^8.0.3",
+    "react-router-dom": "^6.2.1",
+    "react-transition-group": "^4.4.2",
+    "recoil": "^0.6.1",
+    "sanitize-html": "^2.7.0",
+    "use-debounce": "^7.0.1"
+  }
+}

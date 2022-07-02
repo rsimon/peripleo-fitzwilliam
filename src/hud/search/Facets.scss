@@ -1,0 +1,119 @@
+.p6o-facets-container {
+  width:100%;
+  box-sizing:border-box;
+  padding:0 5px 0 45px;
+
+  .p6o-facets {
+    color:#5c5c5c;
+
+    .p6o-facets-carousel {
+      display:flex;
+      width:100%;
+      box-sizing:border-box;
+      align-items:center;
+      justify-content: space-between;
+      background-color:#fff;
+      padding:6px;
+      margin:30px 0 7px 0;
+      pointer-events:all;
+      @include rounded-corners(3px);
+      @include box-shadow(0, 0, 4px, 0.25);
+
+      h3 {
+        padding:0;
+        margin:0;
+        font-size:14px;
+        text-transform:capitalize;
+      }
+
+      button {
+        font-size:22px;
+        display:flex;
+        color:#5c5c5c;
+      }
+    }
+
+    .p6o-facets-carousel.centered {
+      justify-content: space-around;
+    }
+
+    ul {
+      list-style-type:none;
+      margin:5px 0 0 0;
+      padding:0;
+    }
+
+    li {
+      margin-bottom:2px;
+      display:block;
+      pointer-events:none;
+      transition:transform 0.15s;
+      cursor:pointer;
+
+      .p6o-facet-value-wrapper {
+        display:inline-block;
+        white-space:nowrap;
+        overflow:hidden;
+        pointer-events:all;
+        @include rounded-corners(3px);
+        @include box-shadow(0, 0, 4px, 0.25);
+       
+        span {
+          display:inline-block;
+          padding:8px 12px;
+        }
+
+        span.p6o-facet-value-count {
+          width:40px;
+          text-align:center;
+          color:#fff;
+          font-weight:bold;
+        }
+
+        span.p6o-facet-value-label {
+          text-transform:capitalize;
+          background-color:#fff;
+        }
+
+      }
+    }
+
+    li:hover:not(.p6o-facet-values-remaining) {
+      transform:scale(1.04);
+    }
+
+    li.p6o-filter-shown {
+      transform:scale(1) !important;
+    }
+
+    li.p6o-filter-hidden {
+      opacity:0.2 !important;
+    }
+
+    li.p6o-filter-hidden:hover {
+      opacity:0.7 !important;
+    }
+
+    li.p6o-facet-values-remaining {
+
+      .p6o-facet-value-wrapper {
+        margin-top:5px;
+        background-color:#fff;
+        @include rounded-corners(2em);
+
+        span {
+          padding:6px 12px 6px 8px;
+        }
+        
+        svg {
+          font-size:20px;
+          vertical-align:text-bottom;
+        }
+
+      }
+
+    }
+
+  }
+
+}

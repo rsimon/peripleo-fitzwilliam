@@ -1,0 +1,89 @@
+html, body, #app {
+  padding:0;
+  margin:0;
+  min-height:100vh;
+  overflow:hidden;
+  font-size:14px;
+  color:#333;
+  
+  * {
+    font-family:'Quicksand', sans-serif;
+  }
+
+}
+
+h1, h2 {
+  margin:0;
+}
+
+button {
+  outline:none;
+  border:2px solid transparent;
+  background-color:transparent;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+}
+
+button:focus {
+  outline:none;
+  // outline:2px solid rgba(0,0,0,0.65);
+}
+
+.screenreader-only {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  clip: rect(1px 1px 1px 1px); // IE 6 and 7
+  clip: rect(1px,1px,1px,1px);
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  overflow: hidden !important;
+}
+
+$bl-red:#c61327;
+$bl-red-hover:#e55767;
+
+/** Mixins **/
+@mixin rounded-corners($radius) {
+  -webkit-border-radius:$radius;
+   -khtml-border-radius:$radius;
+     -moz-border-radius:$radius;
+          border-radius:$radius;
+}
+
+@mixin rounded-corners-top($radius) {
+  -webkit-border-radius:$radius $radius 0 0;
+   -khtml-border-radius:$radius $radius 0 0;
+     -moz-border-radius:$radius $radius 0 0;
+          border-radius:$radius $radius 0 0;
+}
+
+@mixin rounded-corners-bottom($radius) {
+  -webkit-border-radius:0 0 $radius $radius;
+   -khtml-border-radius:0 0 $radius $radius;
+     -moz-border-radius:0 0 $radius $radius;
+          border-radius:0 0 $radius $radius;
+}
+
+@mixin box-shadow($x, $y, $radius, $opacity) {
+  -webkit-box-shadow:$x $y $radius rgba(0, 0, 0, $opacity);
+     -moz-box-shadow:$x $y $radius rgba(0, 0, 0, $opacity);
+          box-shadow:$x $y $radius rgba(0, 0, 0, $opacity);
+}
+
+@mixin linear-gradient($start, $end) {
+  background-image: -webkit-linear-gradient(top, $start, $end); 
+  background-image:    -moz-linear-gradient(top, $start, $end); 
+  background-image:     -ms-linear-gradient(top, $start, $end); 
+  background-image:      -o-linear-gradient(top, $start, $end); 
+  background-image:         linear-gradient(top, $start, $end);
+}
+
+@import './hud/HUD';
+@import './hud/MobileHUD';
+@import './loading/Loading';
+@import './map/Map';
+@import './map/selection/MobilePreview.scss';
+@import './map/selection/SelectionPreview.scss';
+@import './tutorial/Tutorial';

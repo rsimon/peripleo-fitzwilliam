@@ -1,0 +1,112 @@
+.p6o-welcome-wrapper {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  pointer-events:none;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:rgba(0,0,0,0.5);
+  z-index:99;
+
+  .p6o-welcome {
+    padding:15px 20px;
+    background-color:#fff;
+    pointer-events:all;
+    width:480px;
+    line-height:160%;
+    @include rounded-corners(5px);
+    @include box-shadow(2px, 2px, 18px, 0.4);
+
+    h1 {
+      padding:10px 0;
+      margin:0;
+      font-size:18px;
+    }
+
+    p {
+      padding:20px 0 40px 0;
+      margin:0;
+      line-height:160%;
+      font-size:16px;
+    }
+
+    .p6o-welcome-buttons {
+      width:100%;
+      display:flex;
+      align-items:baseline;
+
+      label {
+        flex:1;
+
+        input[type="checkbox"] {
+          display:none;
+        }
+
+        svg {
+          font-size:20px;
+          padding-right:5px;
+          vertical-align:text-bottom;
+        }
+      }
+
+      button {
+        border:none;
+        outline:none;
+        cursor:pointer;
+        padding:10px 16px;
+        background-color:transparent;
+        font-size:15px;
+        @include rounded-corners(4px);
+      }
+
+      button.p6o-no-thanks {
+        color:$bl-red;
+        margin-right:15px;
+      }
+
+      button.p6o-no-thanks:hover {
+        background-color:#efefef;
+      }
+
+      button.p6o-take-tour {
+        background-color:$bl-red;
+        color:#fff;
+      }
+
+      button.p6o-take-tour:hover {
+        background-color:$bl-red-hover;
+      }
+
+    }
+
+  }
+
+}
+
+.react-joyride__tooltip {
+
+  a {
+    color:#c61327 !important;  
+  }
+
+  button[data-action="primary"] {
+    background-color:$bl-red !important;
+    border-radius: 4px !important;
+  }
+
+  button[data-action="primary"]:hover {
+    background-color:$bl-red-hover !important;
+  }
+
+  button[data-action="back"] {
+    color:$bl-red !important;
+  }
+
+}
+
+.__floater {
+  transition:none !important;
+}

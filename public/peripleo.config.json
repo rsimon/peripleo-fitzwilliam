@@ -1,0 +1,15 @@
+{
+  "initial_bounds": [-7.9, 49.5, 2.2, 59.4],
+  "welcome_message": "welcome.md",
+  "data": [
+    { "name": "Portable Antiquities Scheme", "format": "LINKED_PLACES", "src": "data/PAS_Warwickshire.lp.json", "logo": "logos/finds.org.uk.png", "attribution":"Findspot Data <a href=\"https://finds.org.uk/\" target=\"_blank\">Portable Antiquities Scheme</a>" }
+  ],
+  "map_style": "https://api.maptiler.com/maps/outdoor/style.json?key=cqqmcLw28krG9Fl7V3kg",
+  "facets": [
+    "type",
+    { "name": "technique", "path": ["relations", "label"], "condition": [ "relationType", "aat:300138082" ] }
+  ],
+  "link_icons": [
+    { "pattern": "finds.org.uk", "img": "../logos/finds.org.uk.png", "label": "Portable Antiquities Scheme" }
+  ]
+}

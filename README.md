@@ -1,2 +1,3 @@
-# peripleo-fitzwilliam
-An implementation of Peripleo with data from the Fitzwilliam Museum Cambridge
+# Peripleo / Fitzwilliam
+
+An implementation of Peripleo with collections data from the Fitzwilliam Museum
