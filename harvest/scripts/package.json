@@ -6,7 +6,8 @@
   "description": "Fitzwilliam API harvest util",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "harvest": "node src/harvest.js",
+    "crosswalk": "node src/crosswalk.js"
   },
   "dependencies": {
     "node-fetch": "^3.2.6",
