@@ -45,8 +45,8 @@ const crosswalkOne = (idx = 0) => {
       features.push({
         '@id': data.URI,
         type: 'Feature',
-        title: name,
         properties: {
+          title: name,
           department
         },
         descriptions: [{ value: description }],
@@ -67,7 +67,7 @@ const crosswalkOne = (idx = 0) => {
       features
     };
 
-    fs.writeFileSync('./crosswalked.json', JSON.stringify(geojson, null, 2));
+    fs.writeFileSync('../../public/data/crosswalked.json', JSON.stringify(geojson, null, 2));
     console.log('Done.');
   }
 }
