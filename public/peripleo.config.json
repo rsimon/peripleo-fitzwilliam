@@ -3,7 +3,7 @@
   "data": [
     { "name": "Fitzwilliam Museum", "format": "LINKED_PLACES", "src": "data/crosswalked.json" }
   ],
-  "map_style": "https://api.maptiler.com/maps/outdoor/style.json?key=cqqmcLw28krG9Fl7V3kg",
+  "map_style": "https://api.maptiler.com/maps/outdoor/style.json?key=n685MFoUAXpwGYc35v3J",
   "facets": [
     { "name": "Type", "path": ["types", "value"] },
     { "name": "Department", "path": ["properties", "department"] }
