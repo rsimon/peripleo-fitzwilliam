@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import Papa from 'papaparse';
 
-const WAIT_MS = 1100;
+const WAIT_MS = 250;
 
 const PATH_TO_URI_LIST = '../data/4da1568a-6f1f-4bd7-94ae-1e05feb1bbfc.csv';
 
@@ -20,12 +20,11 @@ const harvestOne = (idx = 0) => {
     .replace('/id/', '/api/v1/')
     .replace('/object/', '/objects/object-');
 
-
   const filename = `../data/objects/${objectId}.json`;
 
   if (fs.existsSync(filename)) {
     console.log(`${apiURL} (${idx + 1}/${uris.length}) - exists, skipping`);
-    harvestOne(idx + 1);
+    setTimeout(() => harvestOne(idx + 1), 10);
   } else {
     console.log(`${apiURL} (${idx + 1}/${uris.length})`);
 
