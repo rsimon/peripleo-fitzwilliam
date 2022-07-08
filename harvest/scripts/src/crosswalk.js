@@ -10,6 +10,9 @@ const files = fs.readdirSync(BASE_PATH);
 
 const features = [];
 
+const capitalize = str =>
+  str[0].toUpperCase() + str.slice(1).toLowerCase();
+
 const crosswalkOne = (idx = 0) => {
   console.log(`Crosswalking ${idx + 1}/${files.length}`);
 
@@ -18,7 +21,7 @@ const crosswalkOne = (idx = 0) => {
 
   const { data } = json;
 
-  const name = getFirst('summary_title', data.name);
+  const name = getFirst('value', data.title) || getFirst('summary_title', data.name) || data.object;
 
   const description = getFirst('value', data.description);
   
@@ -31,15 +34,12 @@ const crosswalkOne = (idx = 0) => {
   const multimedia = toArray(data.multimedia).length > 0 ?
     toArray(data.multimedia)[0].mid.location : null;
 
-  // TODO lifecycle - periods!
-  // acquisition, creation (-> places / periods), collection (-> places -> summary_title/coordinates)
-
-  // TODO Multimedia
-
   const places = data.lifecycle ?
     Object.values(data.lifecycle).reduce((all, evt) => evt.places ? [...all, ...evt.places] : all, []) : [];
 
-  // TODO geocode places that have no coordinates
+  const periods = data.lifecycle ?
+    Object.values(data.lifecycle).reduce((all, evt) => evt.periods ? 
+      [...all, ...evt.periods.map(p => p.summary_title)] : all, []) : [];
 
   const locatedPlaces = places.filter(p => p.coordinates);
 
@@ -52,7 +52,7 @@ const crosswalkOne = (idx = 0) => {
       '@id': data.URI,
       type: 'Feature',
       properties: {
-        title: `${name} ${accession}`,
+        title: `${capitalize(name)} ${accession}`,
         department
       },
       types: categories.map(value => ({ value })),
@@ -67,6 +67,9 @@ const crosswalkOne = (idx = 0) => {
 
     if (multimedia)
       feature.depictions = [{ '@id': multimedia, thumbnail: multimedia }];
+
+    if (periods.length > 0)
+      feature.properties.periods = periods; 
 
     features.push(feature);
   }

@@ -72,8 +72,10 @@ const ItemCard = props => {
     nodeList: connected
   });
   
-  const tagNav = () => 
+  const tagNav = evt => {
+    evt.preventDefault();
     GoogleAnalytics.tagNavigation(sourceUrl);
+  }
 
   // Temporary hack!
   const color = SIGNATURE_COLOR[3]; 
