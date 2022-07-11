@@ -55,7 +55,7 @@ const crosswalkOne = (idx = 0) => {
         title: `${capitalize(name)} ${accession}`,
         department
       },
-      types: categories.map(value => ({ value })),
+      types: categories.map(label => ({ label })),
       geometry: {
         type: 'Point',
         coordinates: [ parseFloat(coordinates.lng), parseFloat(coordinates.lat) ]
