@@ -4,7 +4,7 @@ import knn from 'rbush-knn';
 import centroid from '@turf/centroid';
 import FlexSearch from 'flexsearch';
 
-import { getDescriptions } from '.';
+import { getBounds, getDescriptions } from '.';
 import { loadLinkedPlaces } from './loaders/LinkedPlacesLoader';
 import { loadImageAnnotations } from './loaders/RecogitoAnnotationLoader';
 import { getSuggestedTerms } from './Suggestions';
@@ -110,9 +110,26 @@ export default class Store {
     return linkedNodes.map(t => t.link.data);
   }
 
-  getNearestNeighbours = (feature, n) => {
+  getNearestNeighbours = (feature, n, opt_query) => {
     const [x, y] = centroid(feature)?.geometry.coordinates;
-    const neighbours = knn(this.spatialIndex, x, y, n + 1);
+
+    let neighbours = null;
+
+    if (opt_query) {
+      // TODO what would be the most efficient way to do this?
+      const all = this.searchMappable(opt_query);
+
+      const allIndexed = new RBush();
+
+      all.forEach(node => {
+        const bounds = getBounds(node);
+        allIndexed.insert({ ...bounds, node });  
+      });
+
+      neighbours = knn(allIndexed, x, y, n + 1);
+    } else {
+      neighbours = knn(this.spatialIndex, x, y, n + 1);
+    }
 
     // Neighbours will include the feature itself, but we can't be sure
     // about the order (locations might be identical!)
