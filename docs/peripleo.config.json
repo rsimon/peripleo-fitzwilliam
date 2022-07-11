@@ -1,5 +1,5 @@
 {
-  "initial_bounds": [-7.9, 49.5, 2.2, 59.4],
+  "initial_bounds": [-28.9, -4.8, 88.2, 59.8],
   "data": [
     { "name": "Fitzwilliam Museum", "format": "LINKED_PLACES", "src": "data/crosswalked.json" }
   ],
