@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Source, Layer } from 'react-map-gl';
+import chroma from 'chroma-js';
 
 import { pointStyle } from './styles/Point';
 import { clusterPointStyle, clusterLabelStyle } from './styles/Clusters';
@@ -23,7 +24,7 @@ const LayersUncategorized = props => {
         <Source type="geojson" data={toFeatureCollection(items)}>
           <Layer 
             id="p6o-points"
-            {...pointStyle({ fill: 'red', radius: 5 })} />
+            {...pointStyle({ fill: '#ff0000', stroke: chroma('#ff0000').darken().hex(), radius: 5 })} />
         </Source>
       } 
 

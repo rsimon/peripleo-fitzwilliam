@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Source, Layer } from 'react-map-gl';
+import chroma from 'chroma-js';
 
 import { SIGNATURE_COLOR } from '../Colors';
 
@@ -113,7 +114,8 @@ const LayersCategorized = props => {
           ...feature,
           properties: {
             ...feature.properties,
-            color
+            color,
+            stroke: chroma(color).darken().hex(),
           }
         }
       });
