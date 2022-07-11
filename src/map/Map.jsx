@@ -112,7 +112,7 @@ const Map = React.forwardRef((props, ref) => {
       const colocated = feature.properties.colocated_records || 0;
 
       if (colocated) {
-        const neighbours = store.getNearestNeighbours(node, colocated, search.query);
+        const neighbours = store.getNearestNeighbours(node, colocated, search);
         setSelection({ nodeList: [ node, ...neighbours ], feature });
       } else {
         setSelection({ node, feature });

@@ -110,18 +110,15 @@ export default class Store {
     return linkedNodes.map(t => t.link.data);
   }
 
-  getNearestNeighbours = (feature, n, opt_query) => {
+  getNearestNeighbours = (feature, n, search) => {
     const [x, y] = centroid(feature)?.geometry.coordinates;
 
     let neighbours = null;
 
-    if (opt_query) {
-      // TODO what would be the most efficient way to do this?
-      const all = this.searchMappable(opt_query);
-
+    // TODO what would be a less hacky way to do this?
+    if (search.query) {
       const allIndexed = new RBush();
-
-      all.forEach(node => {
+      search.items.forEach(node => {
         const bounds = getBounds(node);
         allIndexed.insert({ ...bounds, node });  
       });
