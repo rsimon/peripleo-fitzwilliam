@@ -25,6 +25,8 @@ const crosswalkOne = (idx = 0) => {
 
   const description = getFirst('value', data.description);
   
+  const techniques = toArray(data.techniques).map(t => t?.summary_title);
+
   const categories = toArray(data.categories).map(c => c?.summary_title);
   
   const department = data.department.value;
@@ -33,6 +35,11 @@ const crosswalkOne = (idx = 0) => {
 
   const multimedia = toArray(data.multimedia).length > 0 ?
     toArray(data.multimedia)[0].mid.location : null;
+
+  const acquisitionMethod = data.lifecycle?.acquisition?.method;
+
+  const acquiredFrom = data.lifecycle?.acquisition?.agents ? 
+    toArray(data.lifecycle.acquisition.agents).map(a => a.agent?.summary_title || a.summary_title) : null;
 
   const places = data.lifecycle ?
     Object.values(data.lifecycle).reduce((all, evt) => evt.places ? [...all, ...evt.places] : all, []) : [];
@@ -64,6 +71,15 @@ const crosswalkOne = (idx = 0) => {
 
     if (description)
       feature.descriptions = [{ value: description }];
+
+    if (techniques.length > 0)
+      feature.properties.techniques = techniques;
+
+    if (acquisitionMethod)
+      feature.properties.method = capitalize(acquisitionMethod);
+
+    if (acquiredFrom)
+      feature.properties.acquiredFrom = acquiredFrom;
 
     if (multimedia)
       feature.depictions = [{ '@id': multimedia, thumbnail: multimedia }];

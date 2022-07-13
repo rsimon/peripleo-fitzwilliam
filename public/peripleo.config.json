@@ -5,9 +5,11 @@
   ],
   "map_style": "https://api.maptiler.com/maps/outdoor/style.json?key=n685MFoUAXpwGYc35v3J",
   "facets": [
-    { "name": "Type", "path": ["types", "label"] },
+    { "name": "Category", "path": ["types", "label"] },
     { "name": "Period", "path": ["properties", "periods"] },
-    { "name": "Department", "path": ["properties", "department"] }
+    { "name": "Technique", "path": ["properties", "techniques"] },
+    { "name": "Method of Acquisition", "path": ["properties", "method"] },
+    { "name": "Acquired from", "path": ["properties", "acquiredFrom"] }
   ],
   "link_icons": [
     
