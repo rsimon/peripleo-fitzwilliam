@@ -24,6 +24,7 @@ const featureToNode = (feature, name) => {
 
   // For convenience when mapping
   node.properties.id = id;
+  node.properties.url = feature['@id'];
   node.properties.dataset = name;
         
   return node;
