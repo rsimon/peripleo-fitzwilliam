@@ -13,6 +13,9 @@ const features = [];
 const capitalize = str =>
   str[0].toUpperCase() + str.slice(1).toLowerCase();
 
+// Keep track, so we can geo-reference later
+let allUnlocatedPlaces = [];
+
 const crosswalkOne = (idx = 0) => {
   console.log(`Crosswalking ${idx + 1}/${files.length}`);
 
@@ -50,8 +53,11 @@ const crosswalkOne = (idx = 0) => {
 
   const locatedPlaces = places.filter(p => p.coordinates);
 
-  // TODO Peripleo only supports single place per record at the moment!
+  const unlocatedPlaces = places.filter(p => !p.coordinates).map(p => p.summary_title);
+  if (unlocatedPlaces.length > 0)
+    allUnlocatedPlaces = [...allUnlocatedPlaces, ...unlocatedPlaces];
 
+  // Note: Peripleo only supports single place per record at the moment!
   if (locatedPlaces.length > 0) {
     const { coordinates } = locatedPlaces[0];
 
@@ -99,7 +105,13 @@ const crosswalkOne = (idx = 0) => {
     };
 
     fs.writeFileSync('../../public/data/crosswalked.json', JSON.stringify(geojson, null, 2));
-    console.log('Done.');
+
+    const uniqueUnlocated = Array.from(new Set(allUnlocatedPlaces)).sort();
+
+    const csv = uniqueUnlocated.map(str => `"${str.replaceAll('"', '\\"')}"`).join('\n');
+    fs.writeFileSync('./unlocated.csv', csv);
+
+    console.log(`Done. Recorded ${uniqueUnlocated.length} unlocated places.`);
   }
 }
 
